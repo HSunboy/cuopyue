@@ -21,7 +21,7 @@ Import coupyue in your js file
 import { parser } from 'cuopyue';
 ```
 
-Then, call parserSparksql method
+Then, call `parserSparksql` method
 
 ```javascript
 const sql = 'select age, nickname from userInfo; select id, price from payInfo;'
