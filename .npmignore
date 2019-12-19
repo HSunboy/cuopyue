@@ -1,0 +1,11 @@
+node_modules
+/test/
+package-lock.json
+.DS_Store
+.git
+.vscode
+/src/
+/script/
+/antlr/
+tsconfig.json
+jest.config.js

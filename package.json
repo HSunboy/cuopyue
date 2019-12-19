@@ -1,0 +1,29 @@
+{
+  "name": "cuopyue",
+  "version": "0.0.2",
+  "description": "sql parser",
+  "main": "./lib/src/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "my": "grun",
+    "build:parser": "sh ./scripts/buildParser.sh"
+  },
+  "keywords": [
+    "spark",
+    "sql",
+    "parser"
+  ],
+  "author": "xixuekou",
+  "license": "ISC",
+  "dependencies": {
+    "antlr4": "^4.7.2"
+  },
+  "devDependencies": {
+    "@types/antlr4": "^4.7.0",
+    "@types/jest": "^24.0.24",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.3"
+  }
+}

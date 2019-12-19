@@ -1,0 +1,17 @@
+{
+    "include": [
+        "src/**/*"
+    ],
+    "compilerOptions": {
+        "outDir": "./lib",
+        "module": "umd",
+        "lib": ["ES5", "DOM", "ScriptHost", "ES6"],
+        "target": "ES3",
+        "allowJs": true
+    },
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}
