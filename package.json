@@ -1,6 +1,6 @@
 {
   "name": "cuopyue",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "sql parser",
   "main": "./lib/src/index.js",
   "scripts": {
