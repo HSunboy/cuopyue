@@ -12,7 +12,7 @@ parse sparksql syntax, format SQL
 Install cuopyue using npm:
 
 ```bash
-npm install coupyue -S
+npm install cuopyue -S
 ```
 
 Import coupyue in your js file
