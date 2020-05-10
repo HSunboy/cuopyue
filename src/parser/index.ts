@@ -8,4 +8,3 @@ export interface Parser<V, T> {
     (sql: string, errorListener?: errorHandle, visitor?: V): T
 }
 export { parser as parserSparkSql } from './spark';
-export { SparkTreeVisitor } from './spark';

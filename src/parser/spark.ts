@@ -2,23 +2,22 @@ import * as antlr4 from 'antlr4';
 import { ErrorListener } from 'antlr4/error';
 import { sparkLexer } from "../../antlr/spark/output/sparkLexer";
 import { sparkParser } from "../../antlr/spark/output/sparkParser";
-import { sparkVisitor } from "../../antlr/spark/output/sparkVisitor";
+import { SparkTreeVisitor } from "../visitor/spark/index";
 import { Parser } from "./index";
 import { splitSql } from '../utils/index';
-
-export class SparkTreeVisitor extends sparkVisitor {
-}
 
 class SparkTree extends sparkParser.SingleStatementContext {
 }
 class SparkErrorListener extends ErrorListener {
     private errorListener;
-    constructor (errorlistener) {
+    private parser;
+    constructor (errorlistener, parser) {
         super();
+        this.parser = parser
         this.errorListener = errorlistener;
     }
     syntaxError () {
-        this.errorListener.apply(this, arguments);
+        this.errorListener.apply(this, Array.from(arguments).concat(this.parser));
     }
 }
 
@@ -34,7 +33,7 @@ let parserSingle: Parser<SparkTreeVisitor, SparkTree> = function (sql: string, e
 
     (parser as any).buildParseTrees = true;
     if (errorListener) {
-        let listener = new SparkErrorListener(errorListener);
+        let listener = new SparkErrorListener(errorListener, parser);
         (parser as any).addErrorListener(listener)
     }
 

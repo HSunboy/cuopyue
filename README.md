@@ -1,6 +1,6 @@
 # cuopyue
 ---
-parse sparksql syntax
+parse sparksql syntax, format SQL
 
 [![NPM version][npm-image]][npm-url]
 
@@ -46,9 +46,9 @@ parser.parserSparkSql(sql, (recognizer, offendingSymbol, line, column, msg) => {
 ### Get Table Name
 
 ```javascript
-import { parser } from 'cuopyue';
+import { parser, visitor } from 'cuopyue';
 const sql = 'select age, nickname from userInfo as u;'
-class Visitor extends parser.SparkTreeVisitor {
+class Visitor extends visitor.SparkTreeVisitor {
     visitTableName (ctx) {
         const tableName = ctx.tableIdentifier().getText();
         const tableAlias = ctx.tableAlias().strictIdentifier().getText();
@@ -56,5 +56,15 @@ class Visitor extends parser.SparkTreeVisitor {
     }
 }
 parser.parserSparkSql(sql, null, new Visitor());
+```
+
+### Format SQL
+
+```javascript
+import { parser, visitor } from 'cuopyue';
+const sql = 'select age, nickname from userInfo as u;'
+let formatVisitor = new visitor.SparkFormatVisitor();
+parser.parserSparkSql(sql, null, formatVisitor);
+console.log(formatVisitor.getFormatText());
 ```
 

@@ -1,9 +1,12 @@
-import { parser } from '../src';
-import { SparkTreeVisitor } from '../src/parser';
+import { parser, visitor } from '../src';
 
 
 describe('complete test', () => {
     describe('spark', () => {
+        test('test', () => {
+            let sql = 'select id,name fr1om user ';
+            let result = parser.parserSparkSql(sql, null, new visitor.SparkFormatVisitor());
+        });
         test('base sql return', () => {
             let sql = 'select id,name from user ';
             let result = parser.parserSparkSql(sql);
@@ -31,7 +34,7 @@ describe('complete test', () => {
         test('visitor', () => {
             let sql = 'select id,name from user as u where id = 1;';
             const vt = jest.fn();
-            class V extends SparkTreeVisitor {
+            class V extends visitor.SparkTreeVisitor {
                 visitTableName (ctx) {
                     vt();
                     expect(ctx.tableIdentifier().getText()).toBe('USER');
