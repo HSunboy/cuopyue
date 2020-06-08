@@ -30,6 +30,7 @@ let parserSingle: Parser<SparkTreeVisitor, SparkTree> = function (sql: string, e
     const lexer = <unknown>new sparkLexer(inputStream) as antlr4.Lexer;
     const tokenStream = new antlr4.CommonTokenStream(lexer);
     const parser = new sparkParser(tokenStream);
+    // parser._interp.predictionMode = 0;
 
     (parser as any).buildParseTrees = true;
     if (errorListener) {
